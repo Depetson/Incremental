@@ -1,3 +1,4 @@
+using Assets;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -14,6 +15,7 @@ public class Hajsorob : MonoBehaviour
     public TMP_Text amountText;
     public TMP_Text priceText;
     public TMP_Text earnAmountText;
+    public TMP_Text nameText;
 
     public int price = 3;
     public int earnAmount = 1;
@@ -22,11 +24,13 @@ public class Hajsorob : MonoBehaviour
     public bool hasManager = false;
 
     public List<int> bonuses = new List<int>();
+
+    public HajsorobBase data;
     // Start is called before the first frame update
     void Start()
     {
         mainScript = Camera.main.GetComponent<Main>();
-        mainScript.hajsorob = this;
+      //  mainScript.hajsorob = this;
         priceText.text = $"{price}$";
         earnAmountText.text = $"{CalculateEarnAmount()}$";
     }
@@ -90,5 +94,12 @@ public class Hajsorob : MonoBehaviour
             totalEarnAmount *= bonus;
         }        
         return totalEarnAmount;
+    }
+    
+    public void SetData()
+    {
+        nameText.text = data.Name;
+        var btn = GetComponent<Button>();
+        btn.onClick.AddListener(Click);
     }
 }
