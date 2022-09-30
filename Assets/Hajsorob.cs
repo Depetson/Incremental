@@ -99,7 +99,7 @@ public class Hajsorob : MonoBehaviour
     public void SetData()
     {
         nameText.text = data.Name;
-        var btn = this.GetComponent<Button>();
+        var btn = GetComponent<Button>();
         btn.onClick.AddListener(Click);
     }
 }
